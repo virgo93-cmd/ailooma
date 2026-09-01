@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     template: '%s | AILooma',
   },
   description: siteConfig.description,
+  verification: {
+    google: 'G_Hwk54-Kp2Lh6bPLsI-0TluQMTTV3exs3lwMIQ1h9w',
+  },
   openGraph: {
     type: 'website',
     siteName: siteConfig.name,
