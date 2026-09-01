@@ -8,10 +8,13 @@ export function Footer() {
       <div className="shell footer-grid">
         <div>
           <Link href="/" className="brand brand-light">
-            <span>AI</span>Looma
-            <i />
+            <span className="brand-mark">A</span>
+            <span className="brand-word">AILooma</span>
           </Link>
-          <p>Practical intelligence for the way technology works now.</p>
+          <p>
+            Clear, useful reporting for people who want technology to work
+            better—not feel more complicated.
+          </p>
         </div>
         <div>
           <h3>Explore</h3>
@@ -30,10 +33,10 @@ export function Footer() {
           ))}
         </div>
         <div>
-          <h3>Stay curious</h3>
+          <h3>The weekly signal</h3>
           <p>
-            A focused briefing on useful AI, software, and modern work.
-            Newsletter sign-up is coming soon.
+            Useful AI, dependable software, and practical ways to work smarter.
+            No hype, no noise.
           </p>
           <span className="coming-soon">
             Coming soon <ArrowUpRight size={15} />

@@ -5,13 +5,13 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="topbar shell">
-        <span>Practical technology, clearly explained</span>
-        <span>AILooma · Est. 2026</span>
+        <span>Independent technology publication</span>
+        <span>AI · Automation · Software · Practical Guides</span>
       </div>
       <div className="nav shell">
         <Link href="/" className="brand" aria-label="AILooma home">
-          <span>AI</span>Looma
-          <i />
+          <span className="brand-mark">A</span>
+          <span className="brand-word">AILooma</span>
         </Link>
         <PrimaryNav />
       </div>

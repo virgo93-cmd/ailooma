@@ -2,6 +2,7 @@
 
 ## Completed
 
+- Final modern editorial redesign inspired by the Kalliope layout direction: compact publication header, large lead story, thumbnail-led Top Stories rail, rounded image system, topic directory, stronger section hierarchy, modern archive/search pages, and upgraded long-form article presentation
 - Standard Next.js + TypeScript App Router project foundation
 - Centralized, typed WordPress REST client with caching and error handling
 - Responsive publication design system, header, mobile navigation, and footer

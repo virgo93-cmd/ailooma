@@ -65,7 +65,7 @@ export default async function Home() {
     <main>
       <section className="hero shell">
         <div className="hero-label">
-          <span>Today’s focus</span>
+          <span>Today’s edition</span>
           <span>
             {new Intl.DateTimeFormat('en', {
               weekday: 'long',
@@ -77,11 +77,15 @@ export default async function Home() {
         <div className="hero-grid">
           <StoryCard post={lead} variant="lead" />
           <div className="hero-side">
+            <div className="hero-side-head">
+              <p className="eyebrow">Top stories</p>
+              <span>{String(secondary.length).padStart(2, '0')}</span>
+            </div>
             {secondary.map((post, index) => (
               <StoryCard
                 key={post.id}
                 post={post}
-                variant="compact"
+                variant="mini"
                 index={index + 1}
               />
             ))}
@@ -91,11 +95,11 @@ export default async function Home() {
 
       <section className="desk-nav shell" aria-labelledby="desk-nav-title">
         <div className="desk-nav-copy">
-          <p className="eyebrow">Explore AILooma</p>
-          <h2 id="desk-nav-title">Choose your desk</h2>
+          <p className="eyebrow">Browse by topic</p>
+          <h2 id="desk-nav-title">Technology, sorted.</h2>
           <p>
-            Focused coverage for understanding AI, building useful workflows,
-            choosing better software, and fixing everyday technology.
+            Five focused desks for understanding what matters, choosing better
+            tools, and solving real technology problems.
           </p>
         </div>
         <div className="desk-nav-links">
@@ -103,31 +107,31 @@ export default async function Home() {
             [
               '01',
               'AI',
-              'Ideas and applications beyond the hype.',
+              'Practical intelligence beyond the hype.',
               '/category/ai',
             ],
             [
               '02',
               'Tutorials',
-              'Step-by-step workflows you can follow.',
+              'Workflows explained one clear step at a time.',
               '/category/tutorials',
             ],
             [
               '03',
               'Software',
-              'Clear comparisons for work and study.',
+              'Straightforward choices for work and study.',
               '/category/software',
             ],
             [
               '04',
               'Tools',
-              'Useful products, tested against real needs.',
+              'Useful products matched to real needs.',
               '/category/tools',
             ],
             [
               '05',
               'Guides',
-              'Practical fixes worth keeping nearby.',
+              'Reliable answers worth keeping nearby.',
               '/category/guides',
             ],
           ].map(([number, label, description, href]) => (
@@ -144,8 +148,8 @@ export default async function Home() {
       {latest.length > 0 && (
         <section className="section shell">
           <SectionHeading
-            eyebrow="The feed"
-            title="Latest intelligence"
+            eyebrow="Latest"
+            title="Fresh from the newsroom"
             href="/search"
           />
           <div className="latest-grid">
@@ -164,7 +168,7 @@ export default async function Home() {
         <div className="shell">
           <SectionHeading
             eyebrow="Artificial Intelligence"
-            title="Beyond the hype"
+            title="AI, with the noise removed"
             href="/category/ai"
           />
           <div className="three-grid">
@@ -180,9 +184,9 @@ export default async function Home() {
       </section>
 
       <section className="section shell">
-        <SectionHeading
-          eyebrow="Field notes"
-          title="Practical tutorials"
+          <SectionHeading
+            eyebrow="Learn by doing"
+            title="Tutorials you can follow"
           href="/category/tutorials"
         />
         <div className="tutorial-grid">
@@ -202,8 +206,8 @@ export default async function Home() {
       <section className="section tools-section">
         <div className="shell">
           <SectionHeading
-            eyebrow="Software / Tools"
-            title="Better ways to work"
+            eyebrow="Software & tools"
+            title="A better digital toolkit"
             href="/category/tools"
           />
           <div className="tools-grid">
@@ -224,7 +228,7 @@ export default async function Home() {
       <section className="section shell editors-section">
         <SectionHeading
           eyebrow="Editor’s Picks"
-          title="Guides worth keeping"
+          title="Keep these guides close"
           href="/category/guides"
         />
         <p className="section-intro">

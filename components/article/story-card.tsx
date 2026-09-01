@@ -41,6 +41,7 @@ export function StoryCard({
             src={imageSource}
             alt={image.alt_text || decode(post.title.rendered)}
             fill
+            priority={variant === 'lead'}
             sizes={
               variant === 'lead'
                 ? '(max-width: 800px) 100vw, 62vw'
@@ -64,7 +65,8 @@ export function StoryCard({
         {variant !== 'compact' && <p>{decode(post.excerpt.rendered)}</p>}
         <div className="story-meta">
           <span>
-            {readingTime(post.content.rendered, post.fallback_reading_time)} min read
+            {readingTime(post.content.rendered, post.fallback_reading_time)} min
+            read
           </span>
           <Link
             href={`/article/${post.slug}`}
