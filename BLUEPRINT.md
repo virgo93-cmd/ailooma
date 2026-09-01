@@ -42,6 +42,10 @@ WordPress requests use Next.js fetch caching with a configurable five-minute def
 
 The standard Next.js build is Vercel-ready. Production uses `NEXT_PUBLIC_SITE_URL=https://ailooma.biz.id` and the WordPress REST URL shown in `.env.example`. DNS and CMS hosting are outside this repository.
 
+## CMS indexing isolation
+
+The public, canonical publication is `https://ailooma.biz.id`. WordPress remains a headless editorial backend and its theme-rendered post URLs must not compete in search. Enable **Settings → Reading → Discourage search engines from indexing this site** in WordPress so CMS HTML emits a `noindex` directive while `/wp-json/` remains available. Do not solve duplicate indexing by blocking the REST API. Verify the rendered CMS HTML after configuration; robots.txt alone is not a reliable removal mechanism because crawlers must be able to read a page-level `noindex` directive.
+
 ## Future AdSense integration
 
 Future ad components should be explicit editorial separators, never card lookalikes. Safe insertion points are between homepage sections, after meaningful article intervals, and after articles. Reserved dimensions must prevent layout shift; consent and script loading should be centralized in the root layout. No ad placeholders are rendered today.

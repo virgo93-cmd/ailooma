@@ -1,9 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { StoryCard } from '@/components/article/story-card';
 import { Newsletter } from '@/components/home/newsletter';
 import { SectionHeading } from '@/components/home/section-heading';
 import { safePosts } from '@/lib/wordpress/client';
 import type { WPPost } from '@/types/wordpress';
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
 
 function inDesk(post: WPPost, pattern: RegExp) {
   return post._embedded?.['wp:term']

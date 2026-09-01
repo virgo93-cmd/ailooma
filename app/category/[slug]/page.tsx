@@ -12,8 +12,10 @@ export async function generateStaticParams() {
   const categories = await getCategories().catch(() => []);
   return categories.map((category) => ({ slug: category.slug }));
 }
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const slug = (await params).slug;
+  const page = Math.max(1, Number((await searchParams).page) || 1);
+  const canonical = page > 1 ? `/category/${slug}?page=${page}` : `/category/${slug}`;
   const c = await getCategory(slug).catch(() => null);
   const configured = siteConfig.nav.find(
     (item) => item.href === `/category/${slug}`,
@@ -22,13 +24,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? {
         title: c.name,
         description: c.description || `Latest ${c.name} articles from AILooma.`,
-        alternates: { canonical: `/category/${c.slug}` },
+        alternates: { canonical },
       }
     : configured
       ? {
           title: configured.label,
           description: `Latest ${configured.label} articles from AILooma.`,
-          alternates: { canonical: `/category/${slug}` },
+          alternates: { canonical },
         }
       : { title: 'Category not found' };
 }

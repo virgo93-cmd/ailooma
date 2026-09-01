@@ -12,6 +12,7 @@ export const siteConfig = {
   footer: [
     { label: 'About', href: '/about-us' },
     { label: 'Contact', href: '/contact-us' },
+    { label: 'Privacy Policy', href: '/privacy-policy' },
     { label: 'Terms & Conditions', href: '/terms-conditions' },
     { label: 'Disclaimer', href: '/disclaimer' },
   ],

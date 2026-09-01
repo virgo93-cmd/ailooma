@@ -36,6 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       title,
       description,
+      url: `/article/${post.slug}`,
       publishedTime: post.date,
       modifiedTime: post.modified,
       images: image ? [image] : [],
@@ -98,7 +99,10 @@ export default async function ArticlePage({ params }: Props) {
         description: decode(post.excerpt.rendered),
         datePublished: post.date,
         dateModified: post.modified,
+        url: articleUrl,
         mainEntityOfPage: articleUrl,
+        isPartOf: { '@id': `${siteConfig.url}/#website` },
+        publisher: { '@id': `${siteConfig.url}/#organization` },
         ...(imageSource
           ? { image: new URL(imageSource, siteConfig.url).toString() }
           : {}),

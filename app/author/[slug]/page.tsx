@@ -13,7 +13,11 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const a = await getAuthor((await params).slug).catch(() => null);
   return a
-    ? { title: a.name, description: a.description || `Articles by ${a.name}.` }
+    ? {
+        title: a.name,
+        description: a.description || `Articles by ${a.name}.`,
+        alternates: { canonical: `/author/${a.slug}` },
+      }
     : { title: 'Author' };
 }
 export default async function AuthorPage({ params }: Props) {

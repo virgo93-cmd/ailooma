@@ -11,7 +11,6 @@ export const metadata: Metadata = {
     template: '%s | AILooma',
   },
   description: siteConfig.description,
-  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     siteName: siteConfig.name,
@@ -37,6 +36,31 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${siteConfig.url}/#organization`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        logo: `${siteConfig.url}/icon.svg`,
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${siteConfig.url}/#website`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        description: siteConfig.description,
+        publisher: { '@id': `${siteConfig.url}/#organization` },
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: `${siteConfig.url}/search?q={search_term_string}`,
+          'query-input': 'required name=search_term_string',
+        },
+      },
+    ],
+  };
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
@@ -53,6 +77,12 @@ export default function RootLayout({
         <Header />
         <div id="content">{children}</div>
         <Footer />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema).replace(/</g, '\\u003c'),
+          }}
+        />
       </body>
     </html>
   );

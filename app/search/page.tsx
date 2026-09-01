@@ -3,9 +3,12 @@ import Link from 'next/link';
 import { searchPosts } from '@/lib/wordpress/client';
 import { StoryCard } from '@/components/article/story-card';
 import { EmptyState } from '@/components/article/empty-state';
-export const metadata = {
+import type { Metadata } from 'next';
+export const metadata: Metadata = {
   title: 'Search',
   description: 'Search AILooma articles and practical technology guides.',
+  alternates: { canonical: '/search' },
+  robots: { index: false, follow: true },
 };
 export default async function SearchPage({
   searchParams,

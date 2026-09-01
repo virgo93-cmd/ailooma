@@ -47,6 +47,14 @@
 - Next Image cache extended to 31 days so newly published WordPress media remains available after its first successful optimization
 - A real-content emergency snapshot keeps homepage, categories, search, and author archives populated during temporary WordPress outages
 - Future article slugs explicitly remain dynamic and appear through five-minute ISR or secure on-demand revalidation
+- All 10 published articles completed a title, SEO, factual-accuracy, E-E-A-T, safety, sourcing, internal-link, author, category, and featured-media audit
+- Five high-risk drafts were materially rewritten to remove unsupported statistics, invented studies and quotations, unsafe Windows instructions, and AI filler while preserving their original topics and intent
+- Five already-sound articles received contextual internal links and targeted source improvements; every WordPress edit preserved revision history
+- Unsupported percentage claims, CMS-domain article links, missing article media, missing media alt text, and incorrect published authors were reduced to zero across the published inventory
+- Canonical inheritance corrected across articles, authors, categories, pagination, search, and the homepage; internal search is now `noindex, follow`
+- WebSite and Organization structured data, article publisher relationships, non-empty-category sitemap filtering, and a published Privacy Policy footer link added
+- Secure WordPress-to-Next.js on-demand revalidation is configured and connection-tested in production
+- Comprehensive audit records added in `ARTICLE_AUDIT.md` and `ADSENSE_READINESS.md`
 
 ## In Progress
 
@@ -57,9 +65,9 @@
 - Configure a newsletter provider before enabling subscriptions
 - Add social accounts only when the publication supplies them
 - Add an editorial curation field/taxonomy for explicit homepage control
-- Add on-demand revalidation when a secure WordPress webhook is desired
 - Add AdSense only after editorial and policy readiness
-- Review and publish the four policy-page drafts with owner-approved language
+- Review and publish the Editorial Policy, Corrections Policy, and AI Content Policy drafts with owner-approved language
+- Enable WordPress Search Engine Visibility protection so the CMS frontend cannot compete with the public Next.js site in search
 
 ## Decisions
 
@@ -72,16 +80,18 @@
 ## Known Issues
 
 - WordPress availability and actual taxonomy slugs determine which live sections populate.
-- Trust-policy footer routes return the designed 404 until matching WordPress pages exist.
+- Editorial Policy, Corrections Policy, and AI Content Policy remain WordPress drafts and are intentionally not linked as published policies yet.
 - Live editorial population depends on the WordPress REST endpoint being reachable from Vercel.
 - The requested `privacy-policy` slug was already reserved in WordPress, so the new draft was assigned `privacy-policy-2` and needs owner review before publication.
 - WordPress retains its empty system category `Uncategorized`; the Editor integration role cannot delete the configured default category.
 - The WordPress host occasionally responds slowly; designed loading and unavailable states remain in place.
 - WordPress media returned connection timeouts during final QA; local fallbacks prevent the five current featured images from disappearing while the host is unavailable.
+- The WordPress-rendered frontend is currently indexable and canonicalizes to the CMS domain; an Administrator must enable Settings → Reading → Discourage search engines from indexing this site.
 
 ## Next Steps
 
-1. Review and publish the remaining trust-policy pages.
-2. Add production environment variables and the revalidation secret in Vercel.
-3. Deploy to Vercel and verify the production domain.
-4. Connect newsletter and social links when real accounts exist.
+1. Enable **Discourage search engines from indexing this site** in WordPress Settings → Reading, then verify a CMS article emits `noindex` while `/wp-json/` remains available.
+2. Review and publish Editorial Policy, Corrections Policy, and AI Content Policy.
+3. Complete the owner voice review and optional real-interface screenshots listed in `ARTICLE_AUDIT.md`.
+4. Deploy this audit's frontend SEO changes and verify production canonicals, schema, sitemap, robots, and search `noindex`.
+5. Connect newsletter and social links when real accounts exist, then apply for AdSense when the owner approves all live policies.
