@@ -12,6 +12,9 @@ export const siteConfig = {
   footer: [
     { label: 'About', href: '/about-us' },
     { label: 'Contact', href: '/contact-us' },
+    { label: 'Editorial Policy', href: '/editorial-policy' },
+    { label: 'Corrections Policy', href: '/corrections-policy' },
+    { label: 'AI Content Policy', href: '/ai-content-policy' },
     { label: 'Privacy Policy', href: '/privacy-policy' },
     { label: 'Terms & Conditions', href: '/terms-conditions' },
     { label: 'Disclaimer', href: '/disclaimer' },
