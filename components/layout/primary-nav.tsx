@@ -5,6 +5,7 @@ import { Menu, Search } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useRef } from 'react';
 import { siteConfig } from '@/config/site';
+import { ThemeToggle } from '@/components/layout/theme-toggle';
 
 function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
@@ -31,6 +32,7 @@ export function PrimaryNav() {
         })}
       </nav>
       <div className="nav-actions">
+        <ThemeToggle />
         <Link
           href="/search"
           className="icon-link"
@@ -38,6 +40,9 @@ export function PrimaryNav() {
           aria-current={pathname === '/search' ? 'page' : undefined}
         >
           <Search size={19} />
+        </Link>
+        <Link href="/#newsletter" className="subscribe-link">
+          Subscribe
         </Link>
         <details className="mobile-menu" ref={menu}>
           <summary aria-label="Open navigation menu">

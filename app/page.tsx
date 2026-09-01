@@ -64,16 +64,6 @@ export default async function Home() {
   return (
     <main>
       <section className="hero shell">
-        <div className="hero-label">
-          <span>Today’s edition</span>
-          <span>
-            {new Intl.DateTimeFormat('en', {
-              weekday: 'long',
-              month: 'long',
-              day: 'numeric',
-            }).format(new Date())}
-          </span>
-        </div>
         <div className="hero-grid">
           <StoryCard post={lead} variant="lead" />
           <div className="hero-side">
@@ -93,7 +83,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="desk-nav shell" aria-labelledby="desk-nav-title">
+      <section className="desk-nav shell" id="topics" aria-labelledby="desk-nav-title">
         <div className="desk-nav-copy">
           <p className="eyebrow">Browse by topic</p>
           <h2 id="desk-nav-title">Technology, sorted.</h2>

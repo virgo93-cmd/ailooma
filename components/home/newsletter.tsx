@@ -1,6 +1,6 @@
 export function Newsletter() {
   return (
-    <section className="newsletter">
+    <section className="newsletter" id="newsletter">
       <div>
         <span>THE SIGNAL</span>
         <h2>Make sense of what’s next.</h2>
