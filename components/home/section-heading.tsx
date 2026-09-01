@@ -16,7 +16,7 @@ export function SectionHeading({
         <h2>{title}</h2>
       </div>
       {href && (
-        <Link href={href}>
+        <Link href={href} aria-label={`View all ${eyebrow} articles`}>
           View all <ArrowRight size={16} />
         </Link>
       )}

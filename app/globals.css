@@ -284,19 +284,19 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   background: linear-gradient(135deg,#4f5cff 0%,#3942c9 100%); color: #fff;
   box-shadow: 0 22px 60px rgba(57,66,201,.22);
 }
-.newsletter span { color: #dfe1ff; font-size: 10px; font-weight: 900; letter-spacing: .16em; }
+.newsletter span { color: #fff; font-size: 10px; font-weight: 900; letter-spacing: .16em; }
 .newsletter h2 {
   max-width: 700px; margin: 12px 0 0; font-size: clamp(46px,6vw,80px);
   line-height: .9; letter-spacing: -.07em;
 }
-.newsletter p { max-width: 480px; color: #f0f1ff; font-size: 15px; line-height: 1.6; }
+.newsletter p { max-width: 480px; color: #fff; font-size: 15px; line-height: 1.6; }
 .newsletter button, .coming-soon {
   display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
   padding: 13px 18px; border: 1px solid transparent; border-radius: 999px;
   background: #fff; color: #242a89; font-size: 12px; font-weight: 800;
 }
 .newsletter button:disabled { cursor: default; }
-.newsletter small { display: block; margin-top: 10px; color: #dfe1ff; font-size: 10px; }
+.newsletter small { display: block; margin-top: 10px; color: #fff; font-size: 10px; }
 .offline-home {
   min-height: 68vh; display: grid; grid-template-columns: 1.3fr .7fr;
   gap: 80px; align-items: center; padding-block: 80px;
