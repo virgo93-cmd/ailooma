@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   verification: {
     google: 'G_Hwk54-Kp2Lh6bPLsI-0TluQMTTV3exs3lwMIQ1h9w',
   },
+  other: {
+    'google-adsense-account': 'ca-pub-1478743894328528',
+  },
   openGraph: {
     type: 'website',
     siteName: siteConfig.name,
