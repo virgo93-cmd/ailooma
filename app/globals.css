@@ -280,21 +280,23 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .newsletter {
   width: min(1320px,calc(100% - 64px)); margin: 36px auto 86px;
   display: grid; grid-template-columns: 1fr .8fr; gap: 60px; align-items: end;
-  padding: clamp(38px,6vw,76px); border-radius: var(--radius-lg); background: var(--signal);
+  padding: clamp(38px,6vw,76px); border-radius: var(--radius-lg);
+  background: linear-gradient(135deg,#4f5cff 0%,#3942c9 100%); color: #fff;
+  box-shadow: 0 22px 60px rgba(57,66,201,.22);
 }
-.newsletter span { font-size: 10px; font-weight: 900; letter-spacing: .16em; }
+.newsletter span { color: #dfe1ff; font-size: 10px; font-weight: 900; letter-spacing: .16em; }
 .newsletter h2 {
   max-width: 700px; margin: 12px 0 0; font-size: clamp(46px,6vw,80px);
   line-height: .9; letter-spacing: -.07em;
 }
-.newsletter p { max-width: 480px; font-size: 15px; line-height: 1.6; }
+.newsletter p { max-width: 480px; color: #f0f1ff; font-size: 15px; line-height: 1.6; }
 .newsletter button, .coming-soon {
   display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
-  padding: 13px 18px; border: 1px solid var(--ink); border-radius: 999px;
-  background: var(--ink); color: white; font-size: 12px; font-weight: 800;
+  padding: 13px 18px; border: 1px solid transparent; border-radius: 999px;
+  background: #fff; color: #242a89; font-size: 12px; font-weight: 800;
 }
 .newsletter button:disabled { cursor: default; }
-.newsletter small { display: block; margin-top: 10px; font-size: 10px; }
+.newsletter small { display: block; margin-top: 10px; color: #dfe1ff; font-size: 10px; }
 .offline-home {
   min-height: 68vh; display: grid; grid-template-columns: 1.3fr .7fr;
   gap: 80px; align-items: center; padding-block: 80px;
@@ -535,7 +537,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .footer-grid > div:nth-child(2) a, .footer-grid > div:nth-child(3) a {
   margin: 0 0 11px; color: #d7d9df; font-size: 13px;
 }
-.coming-soon { border-color: #3b3f48; background: #1b1e24; }
+.coming-soon { border-color: #3b3f48; background: #1b1e24; color: white; }
 .copyright {
   margin-top: 62px; padding: 22px 0 30px; border-top: 1px solid #30343c;
   color: #878b94; font-size: 10px;
@@ -606,7 +608,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   .latest-grid > .story, .three-grid > .story, .tutorial-grid > .story,
   .tools-grid > .story, .editors-grid > .story, .archive-grid > .story { margin-bottom: 34px; }
   .newsletter { gap: 26px; margin-bottom: 58px; padding: 34px 26px; }
-  .newsletter h2 { font-size: 47px; }
+  .newsletter h2 { font-size: 42px; }
   .archive, .search-page, .content-page, .not-found, .error-page { padding-block: 44px 80px; }
   .archive > header > span { position: static; }
   .author-head { align-items: flex-start; flex-direction: column; }
