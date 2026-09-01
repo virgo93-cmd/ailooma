@@ -1,0 +1,29 @@
+# AILooma
+
+> AILooma is an independent technology publication covering artificial intelligence, automation, software, productivity tools, tutorials, troubleshooting, and practical technology guides.
+
+AILooma publishes human-authored editorial content for readers who want clear, useful explanations of modern technology. WordPress is used as the editorial CMS, while the public publication is served at https://ailooma.biz.id.
+
+## Main Sections
+
+- [Artificial Intelligence](https://ailooma.biz.id/category/ai): Practical AI explanations, use cases, and guidance.
+- [Tutorials](https://ailooma.biz.id/category/tutorials): Step-by-step technology and automation tutorials.
+- [Software](https://ailooma.biz.id/category/software): Software recommendations, comparisons, and productivity coverage.
+- [Tools](https://ailooma.biz.id/category/tools): Useful technology and AI tool coverage.
+- [Guides](https://ailooma.biz.id/category/guides): Troubleshooting and evergreen practical guides.
+
+## Publication Information
+
+- [About AILooma](https://ailooma.biz.id/about-us): Information about the publication and its editorial focus.
+- [Contact](https://ailooma.biz.id/contact-us): How to contact AILooma.
+- [Terms and Conditions](https://ailooma.biz.id/terms-conditions): Terms governing use of the website.
+- [Disclaimer](https://ailooma.biz.id/disclaimer): Publication disclaimer.
+
+## Discovery
+
+- [XML Sitemap](https://ailooma.biz.id/sitemap.xml): Index of published articles, categories, authors, and pages.
+- [Robots Policy](https://ailooma.biz.id/robots.txt): Crawler access rules.
+
+## Optional
+
+- [Search](https://ailooma.biz.id/search): Search published AILooma content.
