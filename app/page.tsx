@@ -88,7 +88,11 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="desk-nav shell" id="topics" aria-labelledby="desk-nav-title">
+      <section
+        className="desk-nav shell"
+        id="topics"
+        aria-labelledby="desk-nav-title"
+      >
         <div className="desk-nav-copy">
           <p className="eyebrow">Browse by topic</p>
           <h2 id="desk-nav-title">Technology, sorted.</h2>
@@ -103,31 +107,31 @@ export default async function Home() {
               '01',
               'AI',
               'Practical intelligence beyond the hype.',
-              '/category/ai',
+              '/hub/artificial-intelligence',
             ],
             [
               '02',
               'Tutorials',
               'Workflows explained one clear step at a time.',
-              '/category/tutorials',
+              '/hub/tutorials',
             ],
             [
               '03',
               'Software',
               'Straightforward choices for work and study.',
-              '/category/software',
+              '/hub/software',
             ],
             [
               '04',
               'Tools',
               'Useful products matched to real needs.',
-              '/category/tools',
+              '/hub/tools',
             ],
             [
               '05',
               'Guides',
               'Reliable answers worth keeping nearby.',
-              '/category/guides',
+              '/hub/guides',
             ],
           ].map(([number, label, description, href]) => (
             <Link href={href} key={href}>
@@ -179,9 +183,9 @@ export default async function Home() {
       </section>
 
       <section className="section shell">
-          <SectionHeading
-            eyebrow="Learn by doing"
-            title="Tutorials you can follow"
+        <SectionHeading
+          eyebrow="Learn by doing"
+          title="Tutorials you can follow"
           href="/category/tutorials"
         />
         <div className="tutorial-grid">

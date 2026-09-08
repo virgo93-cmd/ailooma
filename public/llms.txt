@@ -19,6 +19,14 @@ AILooma publishes human-authored editorial content for readers who want clear, u
 - [Terms and Conditions](https://ailooma.biz.id/terms-conditions): Terms governing use of the website.
 - [Disclaimer](https://ailooma.biz.id/disclaimer): Publication disclaimer.
 
+## Topic hubs
+
+- [Artificial Intelligence Hub](https://ailooma.biz.id/hub/artificial-intelligence): Practical AI concepts, workflows, evaluations, and responsible adoption.
+- [Tutorials Hub](https://ailooma.biz.id/hub/tutorials): Step-by-step technology and automation tutorials.
+- [Software Hub](https://ailooma.biz.id/hub/software): Software comparisons, alternatives, setup, privacy, and reliability.
+- [Tools Hub](https://ailooma.biz.id/hub/tools): AI, automation, browser, and productivity tools organized by task.
+- [Guides Hub](https://ailooma.biz.id/hub/guides): Durable setup, troubleshooting, privacy, security, and backup guidance.
+
 ## Discovery
 
 - [XML Sitemap](https://ailooma.biz.id/sitemap.xml): Index of published articles, categories, authors, and pages.

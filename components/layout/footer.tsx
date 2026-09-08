@@ -18,6 +18,7 @@ export function Footer() {
         </div>
         <div>
           <h3>Explore</h3>
+          <Link href="/hub">Topic Hubs</Link>
           {siteConfig.nav.map((x) => (
             <Link key={x.href} href={x.href}>
               {x.label}

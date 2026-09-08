@@ -6,6 +6,7 @@ import {
   safePosts,
 } from '@/lib/wordpress/client';
 import { siteConfig } from '@/config/site';
+import { topicHubs } from '@/config/hubs';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [posts, categories, authors, pages] = await Promise.all([
     safePosts({ per_page: 100 }),
@@ -20,17 +21,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily',
       priority: 1,
     },
+    {
+      url: `${siteConfig.url}/hub`,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    ...topicHubs.map((hub) => ({
+      url: `${siteConfig.url}/hub/${hub.slug}`,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    })),
     ...posts.items.map((p) => ({
       url: `${siteConfig.url}/article/${p.slug}`,
       lastModified: new Date(p.modified),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     })),
-    ...categories.filter((c) => (c.count || 0) > 0).map((c) => ({
-      url: `${siteConfig.url}/category/${c.slug}`,
-      changeFrequency: 'weekly' as const,
-      priority: 0.6,
-    })),
+    ...categories
+      .filter((c) => (c.count || 0) > 0)
+      .map((c) => ({
+        url: `${siteConfig.url}/category/${c.slug}`,
+        changeFrequency: 'weekly' as const,
+        priority: 0.6,
+      })),
     ...authors.map((a) => ({
       url: `${siteConfig.url}/author/${a.slug}`,
       changeFrequency: 'monthly' as const,
