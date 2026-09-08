@@ -76,6 +76,11 @@ export default function RootLayout({
             __html: `(function(){try{var t=localStorage.getItem('ailooma-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch(e){}})();`,
           }}
         />
+        <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1478743894328528"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
       <body>
         <a className="skip-link" href="#content">
@@ -84,11 +89,6 @@ export default function RootLayout({
         <Header />
         <div id="content">{children}</div>
         <Footer />
-        <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1478743894328528"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
