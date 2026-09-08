@@ -5,6 +5,21 @@ export const decode = (value = '') =>
     .replace(/<[^>]*>/g, '')
     .replace(/&nbsp;/g, ' ')
     .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#0*39;|&apos;/g, "'")
+    .replace(/&#x0*27;/gi, "'")
+    .replace(/&#x0*22;/gi, '"')
+    .replace(/&#x0*26;/gi, '&')
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex: string) => {
+      const codePoint = Number.parseInt(hex, 16);
+      return Number.isFinite(codePoint) ? String.fromCodePoint(codePoint) : _;
+    })
+    .replace(/&#([0-9]+);/g, (_, digits: string) => {
+      const codePoint = Number.parseInt(digits, 10);
+      return Number.isFinite(codePoint) ? String.fromCodePoint(codePoint) : _;
+    })
     .replace(/&#8217;/g, '’')
     .replace(/&#8220;|&#8221;/g, '“')
     .replace(/&hellip;/g, '…')
