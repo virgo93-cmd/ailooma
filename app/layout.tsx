@@ -5,6 +5,8 @@ import { Footer } from '@/components/layout/footer';
 import { siteConfig } from '@/config/site';
 import './globals.css';
 
+const gaMeasurementId = 'G-CZDM8DNN4Z';
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -81,6 +83,16 @@ export default function RootLayout({
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){window.dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${gaMeasurementId}');`}
+        </Script>
       </head>
       <body>
         <a className="skip-link" href="#content">
