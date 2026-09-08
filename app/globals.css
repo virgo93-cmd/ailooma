@@ -1649,6 +1649,19 @@ input:focus-visible {
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
+.footer-social {
+  margin-top: 24px;
+}
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #d7d9df;
+  font-size: 13px;
+}
+.footer-social a:hover {
+  color: var(--signal);
+}
 .footer-grid > div:nth-child(2),
 .footer-grid > div:nth-child(3) {
   display: flex;

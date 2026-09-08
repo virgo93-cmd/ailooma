@@ -15,6 +15,17 @@ export function Footer() {
             Clear, useful reporting for people who want technology to work
             better—not feel more complicated.
           </p>
+          <div className="footer-social">
+            <h3>Connect</h3>
+            <a
+              href="https://www.facebook.com/profile.php?id=61593952873777"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="AILooma on Facebook"
+            >
+              Facebook <ArrowUpRight size={14} />
+            </a>
+          </div>
         </div>
         <div>
           <h3>Explore</h3>
