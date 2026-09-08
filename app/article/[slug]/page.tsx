@@ -19,7 +19,9 @@ import { prepareArticleContent } from '@/lib/wordpress/sanitize';
 type Props = { params: Promise<{ slug: string }> };
 export const dynamicParams = true;
 export async function generateStaticParams() {
-  const { items } = await safePosts({ per_page: 100 });
+  // Static param generation only needs slugs; avoid embedding full article HTML
+  // into the build-time response (which can exceed Next.js' 2 MB data-cache limit).
+  const { items } = await safePosts({ per_page: 100, _embed: false });
   return items.map((post) => ({ slug: post.slug }));
 }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

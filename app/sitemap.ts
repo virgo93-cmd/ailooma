@@ -9,7 +9,7 @@ import { siteConfig } from '@/config/site';
 import { topicHubs } from '@/config/hubs';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [posts, categories, authors, pages] = await Promise.all([
-    safePosts({ per_page: 100 }),
+    safePosts({ per_page: 100, _embed: false }),
     getCategories().catch(() => []),
     getAuthors().catch(() => []),
     getPages().catch(() => []),
