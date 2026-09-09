@@ -54,6 +54,7 @@ export default function RootLayout({
         name: siteConfig.name,
         url: siteConfig.url,
         logo: `${siteConfig.url}/icon.svg`,
+        sameAs: [siteConfig.social.facebook],
       },
       {
         '@type': 'WebSite',

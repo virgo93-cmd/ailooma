@@ -18,7 +18,7 @@ export function Footer() {
           <div className="footer-social">
             <h3>Connect</h3>
             <a
-              href="https://www.facebook.com/profile.php?id=61593952873777"
+              href={siteConfig.social.facebook}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="AILooma on Facebook"

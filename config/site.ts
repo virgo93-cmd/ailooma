@@ -2,6 +2,9 @@ export const siteConfig = {
   name: 'AILooma',
   description: 'Practical intelligence for the way technology works now.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://ailooma.biz.id',
+  social: {
+    facebook: 'https://www.facebook.com/profile.php?id=61593952873777',
+  },
   nav: [
     { label: 'AI', href: '/category/ai' },
     { label: 'Tutorials', href: '/category/tutorials' },
