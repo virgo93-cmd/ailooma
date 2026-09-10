@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   other: {
     'google-adsense-account': 'ca-pub-1478743894328528',
-    'facebook-domain-verification': '5vj693pt2lw0uw76qmgffagx4n1q',
+    'facebook-domain-verification': '5vj693pt2lw0uw76qmgffagx4nilag',
   },
   openGraph: {
     type: 'website',
