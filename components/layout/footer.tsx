@@ -50,9 +50,9 @@ export function Footer() {
             Useful AI, dependable software, and practical ways to work smarter.
             No hype, no noise.
           </p>
-          <span className="coming-soon">
-            Coming soon <ArrowUpRight size={15} />
-          </span>
+          <Link href="/contact-us" className="coming-soon">
+            Contact the editorial team <ArrowUpRight size={15} />
+          </Link>
         </div>
       </div>
       <div className="shell copyright">

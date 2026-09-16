@@ -665,7 +665,7 @@ input:focus-visible {
   font-size: 15px;
   line-height: 1.6;
 }
-.newsletter button,
+.newsletter-cta,
 .coming-soon {
   display: inline-flex;
   align-items: center;
@@ -679,8 +679,10 @@ input:focus-visible {
   font-size: 12px;
   font-weight: 800;
 }
-.newsletter button:disabled {
-  cursor: default;
+.newsletter-cta:hover,
+.coming-soon:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(16, 17, 20, 0.14);
 }
 .newsletter small {
   display: block;

@@ -52,19 +52,38 @@ export default async function Home() {
 
   const lead = posts[0];
   const secondary = posts.slice(1, 4);
-  const latest = posts.slice(4, 9);
-  const ai = posts
-    .filter((post) => inDesk(post, /(^|-)ai($|-)|artificial/))
-    .slice(0, 3);
-  const tutorials = posts
-    .filter((post) => inDesk(post, /tutorial|how-to/))
-    .slice(0, 4);
-  const software = posts
-    .filter((post) => inDesk(post, /software|tools?|productivity|comparison/))
-    .slice(0, 4);
-  const guides = posts
-    .filter((post) => inDesk(post, /guides?|explainer|troubleshoot/))
-    .slice(0, 4);
+  const usedIds = new Set([lead.id, ...secondary.map((post) => post.id)]);
+  const takeUnique = (source: WPPost[], count: number) => {
+    const selected: WPPost[] = [];
+    for (const post of source) {
+      if (usedIds.has(post.id)) continue;
+      usedIds.add(post.id);
+      selected.push(post);
+      if (selected.length === count) break;
+    }
+    return selected;
+  };
+  const latest = takeUnique(posts.slice(4), 5);
+  const ai = takeUnique(
+    posts.filter((post) => inDesk(post, /(^|-)ai($|-)|artificial/)),
+    3,
+  );
+  const tutorials = takeUnique(
+    posts.filter((post) => inDesk(post, /tutorial|how-to/)),
+    4,
+  );
+  const software = takeUnique(
+    posts.filter((post) => inDesk(post, /software|tools?|productivity|comparison/)),
+    4,
+  );
+  const guides = takeUnique(
+    posts.filter((post) => inDesk(post, /guides?|explainer|troubleshoot/)),
+    4,
+  );
+  const aiDisplay = ai.length ? ai : takeUnique(posts, 3);
+  const tutorialsDisplay = tutorials.length ? tutorials : takeUnique(posts, 4);
+  const softwareDisplay = software.length ? software : takeUnique(posts, 4);
+  const guidesDisplay = guides.length ? guides : takeUnique(posts, 4);
 
   return (
     <main>
@@ -171,7 +190,7 @@ export default async function Home() {
             href="/category/ai"
           />
           <div className="three-grid">
-            {(ai.length ? ai : posts.slice(1, 4)).map((post, index) => (
+            {aiDisplay.map((post, index) => (
               <StoryCard
                 key={post.id}
                 post={post}
@@ -189,7 +208,7 @@ export default async function Home() {
           href="/category/tutorials"
         />
         <div className="tutorial-grid">
-          {(tutorials.length ? tutorials : posts.slice(2, 6)).map(
+          {tutorialsDisplay.map(
             (post, index) => (
               <StoryCard
                 key={post.id}
@@ -210,7 +229,7 @@ export default async function Home() {
             href="/category/tools"
           />
           <div className="tools-grid">
-            {(software.length ? software : posts.slice(5, 9)).map(
+            {softwareDisplay.map(
               (post, index) => (
                 <StoryCard
                   key={post.id}
@@ -235,7 +254,7 @@ export default async function Home() {
           invented popularity.
         </p>
         <div className="editors-grid">
-          {(guides.length ? guides : posts.slice(0, 4)).map((post, index) => (
+          {guidesDisplay.map((post, index) => (
             <StoryCard
               key={post.id}
               post={post}

@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export function Newsletter() {
   return (
     <section className="newsletter" id="newsletter">
@@ -10,11 +12,12 @@ export function Newsletter() {
           A considered weekly briefing on AI, software, and the tools reshaping
           modern work.
         </p>
-        <button type="button" disabled aria-describedby="newsletter-note">
-          Newsletter coming soon
-        </button>
+        <Link href="/contact-us" className="newsletter-cta">
+          Contact the editorial team
+        </Link>
         <small id="newsletter-note">
-          Sign-up will open when our email service is ready.
+          Email updates will be introduced after the publication workflow is
+          ready. In the meantime, contact us for editorial questions.
         </small>
       </div>
     </section>
