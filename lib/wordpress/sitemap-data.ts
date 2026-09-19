@@ -1,4 +1,4 @@
-import type { WPAuthor, WPPage, WPPost, WPTerm } from '@/types/wordpress';
+import type { WPPage, WPPost } from '@/types/wordpress';
 
 const apiBase =
   process.env.WORDPRESS_API_URL || 'https://cms.ailooma.biz.id/wp-json/wp/v2';
@@ -41,7 +41,8 @@ export async function getPublishedSitemapPosts(): Promise<WPPost[]> {
   const query = {
     status: 'publish',
     per_page: 100,
-    _fields: 'id,slug,modified,author,categories',
+    _embed: 'author',
+    _fields: 'id,slug,modified,author,categories,_links,_embedded',
   };
   const first = await wordpressCollection<WPPost>('posts', {
     ...query,
@@ -60,31 +61,11 @@ export async function getPublishedSitemapPosts(): Promise<WPPost[]> {
   return posts;
 }
 
-export async function getSitemapCategories(): Promise<WPTerm[]> {
-  const { items } = await wordpressCollection<WPTerm>('categories', {
-    per_page: 100,
-    _fields: 'id,slug,count',
-  });
-  return items;
-}
-
 export async function getSitemapPages(): Promise<WPPage[]> {
   const { items } = await wordpressCollection<WPPage>('pages', {
     status: 'publish',
     per_page: 100,
     _fields: 'slug,modified',
-  });
-  return items;
-}
-
-export async function getSitemapAuthors(
-  authorIds: number[],
-): Promise<WPAuthor[]> {
-  if (!authorIds.length) return [];
-  const { items } = await wordpressCollection<WPAuthor>('users', {
-    include: [...new Set(authorIds)].join(','),
-    per_page: 100,
-    _fields: 'id,slug',
   });
   return items;
 }

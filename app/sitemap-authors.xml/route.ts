@@ -2,7 +2,6 @@ import { siteConfig } from '@/config/site';
 import { headers } from 'next/headers';
 import {
   getPublishedSitemapPosts,
-  getSitemapAuthors,
   renderUrlset,
   sitemapResponse,
 } from '@/lib/wordpress/sitemap-data';
@@ -12,9 +11,11 @@ export const revalidate = 300;
 export async function GET() {
   await headers();
   const posts = await getPublishedSitemapPosts();
-  const authors = await getSitemapAuthors(posts.map((post) => post.author));
-  const entries = authors.map((author) => ({
-    url: `${siteConfig.url}/author/${author.slug}`,
+  const authorSlugs = new Set(
+    posts.flatMap((post) => post._embedded?.author ?? []).map((author) => author.slug),
+  );
+  const entries = [...authorSlugs].map((slug) => ({
+    url: `${siteConfig.url}/author/${slug}`,
   }));
 
   return sitemapResponse(renderUrlset(entries));
