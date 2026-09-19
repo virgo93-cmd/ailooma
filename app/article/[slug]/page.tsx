@@ -15,6 +15,7 @@ import {
 import { StoryCard } from '@/components/article/story-card';
 import { siteConfig } from '@/config/site';
 import { prepareArticleContent } from '@/lib/wordpress/sanitize';
+import { relatedStorySlugs } from '@/lib/wordpress/related-stories';
 
 type Props = { params: Promise<{ slug: string }> };
 export const dynamicParams = true;
@@ -58,19 +59,30 @@ export default async function ArticlePage({ params }: Props) {
     imageSource = postImageSource(post),
     author = postAuthor(post),
     term = postTerms(post)[0];
-  const related = (
-    await safePosts({
+  const curatedSlugs = relatedStorySlugs[(await params).slug] || [];
+  const [categoryCandidates, curatedCandidates] = await Promise.all([
+    safePosts({
       categories: post.categories[0],
       exclude: post.id,
-      per_page: 3,
-    })
-  ).items;
-  const moreStories = (
-    await safePosts({
-      exclude: post.id,
-      per_page: 4,
-    })
-  ).items;
+      per_page: 8,
+    }),
+    curatedSlugs.length
+      ? safePosts({ slug: curatedSlugs.join(','), per_page: curatedSlugs.length })
+      : Promise.resolve({ items: [] }),
+  ]);
+  const curatedPosts = curatedCandidates.items
+    .filter((candidate) => candidate.id !== post.id)
+    .sort(
+      (a, b) =>
+        curatedSlugs.indexOf(a.slug) - curatedSlugs.indexOf(b.slug),
+    );
+  const related = categoryCandidates.items
+    .filter(
+      (candidate) =>
+        !curatedPosts.some((curated) => curated.id === candidate.id),
+    )
+    .slice(0, 3);
+  const moreStories = curatedPosts;
   const articleContent = prepareArticleContent(post.content.rendered);
   const articleUrl = `${siteConfig.url}/article/${post.slug}`;
   const breadcrumbItems = [
