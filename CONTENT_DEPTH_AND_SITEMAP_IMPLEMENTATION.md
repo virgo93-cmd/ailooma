@@ -96,9 +96,23 @@ Every update was checked through the WordPress response to retain `publish` stat
 - `npm run lint` (Oxlint + TypeScript): **PASS**.
 - First sandbox-only production build could not reach WordPress (`EACCES`); a permitted build then exposed a transient WordPress categories `504`. Category sitemap was changed to use the five stable, canonical navigation routes; CMS-driven article/page/author sitemaps are request-time with tagged data caching.
 - `npm run build` after the adjustment and author-source fix: **PASS**, Next.js 16.3.4; 91 static/dynamic route outputs generated, including all five child sitemap routes and the index. The final sandboxed run printed recoverable `EACCES` fetch warnings for existing fallback-capable CMS page requests; generation completed successfully.
-- First Vercel deployment of commit `4bbed04` completed. Public validation exposed an HTTP 500 in the author sitemap because the WordPress users listing endpoint was unavailable; author lookup has been changed to embedded author metadata and is awaiting a follow-up deployment/verification.
+- First Vercel deployment of commit `4bbed04` completed. Public validation exposed an HTTP 500 in the author sitemap because the WordPress users listing endpoint was unavailable; author lookup was changed to embedded author metadata.
+- Follow-up commit `947b0fb` deployed successfully on Vercel. The final public checks below were performed against this deployment.
 - Expected redirect list retained in `next.config.ts`: all six permanent routes from `CONTENT_REMEDIATION_IMPLEMENTATION.md`; final HTTP destination/status and sitemap exclusion checks are pending deployment.
 
 ## Post-deployment verification results
 
-Initial public check of deployment `4bbed04`: sitemap index and article/category/hub/page child files returned valid XML/HTTP 200 with counts 57/5/6/9. Across those four children: 77 URLs, zero duplicates, zero wrong-host URLs, zero search/legacy URLs, and all 57 article entries had `lastmod`. The author child returned HTTP 500 and was corrected in source. Re-run all checks after the follow-up deployment; record final results here.
+Final public check after deployment `947b0fb`:
+
+- Index and all five child sitemap URLs returned HTTP 200 and parsed as the expected XML roots. Index listed exactly the five intended child files.
+- URL counts: articles 57; categories 5; hubs 6; pages 9 (home + eight CMS pages); authors 1. Total: **78**.
+- All 57 WordPress-published posts appeared once in the article sitemap; CMS inventory also returned 57. Article coverage: **100%**.
+- Article `<lastmod>` matched the WordPress `modified` value for **57/57** posts after normalizing PowerShell’s parsed ISO timestamps.
+- Duplicate URLs across the five children: **0**. Wrong-host URLs: **0**. Search/noindex and six legacy/redirect URLs in sitemaps: **0**.
+- The three merged posts were confirmed still Draft (IDs 234, 375, and 57); none appeared in the sitemap. All six known historical URLs returned HTTP **308** to their configured replacement; each target was in the live article sitemap.
+- Eight representative pages spanning enriched/unchanged content, tutorials, AI agents, n8n, browser tools, and Windows guidance returned HTTP 200 and had matching canonical, Article and BreadcrumbList JSON-LD, author name, Open Graph, Twitter card, image, and contextual-link checks: **8/8**.
+- The existing `robots.txt` implementation still names only `/sitemap.xml`; `/search` remains noindex and absent from the index. No live WordPress publish/draft webhook event was replayed as part of verification; automatic membership/modified-date updates are provided by the shared cache tag and existing webhook invalidation.
+
+## Remaining human editorial review
+
+The site owner/editor should verify that the tutorial steps still match the current product interfaces and account/licensing conditions before relying on them; inspect the linked official sources and source-specific caveats; and confirm that any personal expertise/author biography reflects the author accurately. Synthetic examples are instructional, not reported experiments. No AdSense approval outcome is implied by these technical/content checks.
